@@ -1,0 +1,22 @@
+{
+  "name": "front-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muphblu/YorsoGettingXBOX.API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muphblu/YorsoGettingXBOX.API/issues"
+  },
+  "homepage": "https://github.com/muphblu/YorsoGettingXBOX.API#readme",
+  "dependencies": {
+    "material-design-lite": "^1.2.1"
+  }
+}
