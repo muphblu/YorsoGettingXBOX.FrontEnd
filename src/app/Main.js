@@ -31,38 +31,7 @@ const muiTheme = getMuiTheme({
 });
 
 class Main extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleRequestClose = this.handleRequestClose.bind(this);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
-
-    this.state = {
-      open: false,
-    };
-  }
-
-  handleRequestClose() {
-    this.setState({
-      open: false,
-    });
-  }
-
-  handleTouchTap() {
-    this.setState({
-      open: true,
-    });
-  }
-
   render() {
-    const standardActions = (
-      <FlatButton
-        label="Ok"
-        primary={true}
-        onTouchTap={this.handleRequestClose}
-      />
-    );
-
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.container}>
@@ -70,6 +39,7 @@ class Main extends Component {
             <MenuItem>Menu Item</MenuItem>
             <MenuItem>Menu Item 2</MenuItem>
             </Drawer>
+            <div>{this.props.children}</div>
         </div>
       </MuiThemeProvider>
     );
