@@ -3,12 +3,14 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { browserHistory } from 'react-router';
 import { autobind } from 'core-decorators';
-// import API from './../../api';
 
-class DealInfo extends Component {
+import API from './api';
+
+// API.getDeals();
+
+class DocumentUploader extends Component {
     constructor() {
         super();
-        this.handleTouchTap = this.handleTouchTap.bind(this);
     }
 
     @autobind
@@ -17,15 +19,39 @@ class DealInfo extends Component {
         // browserHistory.push('');
         console.log('text', this.refs.title.getValue());
     }
+
     render() {
-        return (<div>
-                <h1>Add deal</h1>
-                <TextField
-                ref="title"
-            hintText="Deal title"
-                /><br />
-                <RaisedButton label="Create" primary={true} onTouchTap={this.handleTouchTap} />
-                </div>
+        return (
+            <div>
+                Lorem Ipsum
+            </div>
+        );
+    }
+}
+
+class DealInfo extends Component {
+    constructor() {
+        super();
+    }
+
+    @autobind
+    handleTouchTap() {
+        // API.addDeal();
+        // browserHistory.push('');
+        console.log('text', this.refs.title.getValue());
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>{this.props.deal.Title}</h1>
+                <h3>{this.props.deal.Description}</h3>
+
+                <DocumentUploader />
+
+                <br />
+                <RaisedButton label="Create" disabled={this.state.isDealAdded} primary={true} onTouchTap={this.handleTouchTap} />
+            </div>
         );
     }
 }

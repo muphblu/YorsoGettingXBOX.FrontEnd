@@ -11,25 +11,44 @@ class API {
 
     }
 
-// /api/deals
-// [
-//     {
-//         "ID":12,
-//         "Title": "title"
-//         "Description":"desc"
-//     },
-//     {
-//         "ID":12,
-//         "Title": "title"
-//         "Description":"desc"
-//     }
-// ]
-    async getDeals() {
+    // /api/deals
+    // [
+    //     {
+    //         "ID":12,
+    //         "Title": "title"
+    //         "Description":"desc"
+    //     },
+    //     {
+    //         "ID":12,
+    //         "Title": "title"
+    //         "Description":"desc"
+    //     }
+    // ]
+    static async getDeals() {
+        let body = await fetch(`${baseUrl}/api/deals`);
 
-        let body = fetch(`${baseUrl}/api/deals`);
-        let response = body.json();
+        return body.json();
+    }
 
-        return response;
+    // POST /api/deals
+    // [
+    //     {
+    //         "ID":12,
+    //         "Title": "title"
+    //         "Description":"desc"
+    //     },
+    //     {
+    //         "ID":12,
+    //         "Title": "title"
+    //         "Description":"desc"
+    //     }
+    // ]
+    static async postDocument() {
+
+        // let body = await fetch(`${baseUrl}/api/deals`);
+        // let response = body.json();
+
+        return true;
     }
 
 }
