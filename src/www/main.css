@@ -6,3 +6,14 @@ body {
   font-size: 13px;
   line-height: 20px;
 }
+
+.main-container {
+  margin-left: 260px;
+}
+
+.file-drop {
+  border-color: rgb(232, 232, 232);
+  border-style: dashed;
+  margin: 0 100px;
+  background-image: url("http://localhost:3000/images/cloud.png");
+}

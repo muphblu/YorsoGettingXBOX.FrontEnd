@@ -42,7 +42,7 @@ class Main extends Component {
             <Drawer open={true}>
                 <DealsList ref="deals"/>
             </Drawer>
-            <div>{this.props.children}</div>
+            <div className="main-container">{this.props.children}</div>
         </div>
       </MuiThemeProvider>
     );
