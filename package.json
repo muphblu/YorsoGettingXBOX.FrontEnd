@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/muphblu/YorsoGettingXBOX.API#readme",
   "dependencies": {
+    "core-decorators": "^0.12.3",
     "material-design-lite": "^1.2.1",
     "material-ui": "^0.15.0",
     "react": "^15.0.1",
