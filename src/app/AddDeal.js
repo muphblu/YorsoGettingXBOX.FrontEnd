@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { browserHistory } from 'react-router';
-// import API from './../../api';
 
 class AddDeal extends Component {
     constructor() {
@@ -12,15 +11,23 @@ class AddDeal extends Component {
     handleTouchTap() {
         // API.addDeal();
         // browserHistory.push('');
-        console.log('text', this.refs.title.getValue());
+        let title = this.refs.title.getValue();
+        let desc = this.refs.desc.getValue();
     }
     render() {
         return (<div>
                 <h1>Add deal</h1>
                 <TextField
                 ref="title"
-            hintText="Deal title"
+            hintText="Title"
                 /><br />
+
+                <TextField
+                ref="descr"
+                multiLine={true}
+                hintText="Description"
+                /><br />
+
                 <RaisedButton label="Create" primary={true} onTouchTap={this.handleTouchTap} />
                 </div>
         );
