@@ -6,6 +6,8 @@ import Divider from 'material-ui/Divider';
 import { browserHistory } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import API from './api';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+
 
 class DealsList extends Component {
     constructor() {
@@ -27,6 +29,9 @@ class DealsList extends Component {
     }
     render() {
         return (<div>
+                <Toolbar>
+                <h1>Deals</h1>
+                </Toolbar>
                 {this.state.deals.map( deal =>
                                        (<div key={deal.Id}>
                                         <MenuItem

@@ -76,9 +76,9 @@ class DocumentUploader extends Component {
 
         return (
             <div className="my-uploader" style={{styles}}>
-                This is the ".my-uploader" div. Try dragging a file!
+                Drop some documents here!
                 <FileDrop frame={window} onDrop={this._handleFileDrop}>
-                    Drop some files here!
+                    Drop here!
                 </FileDrop>
             </div>
         );
