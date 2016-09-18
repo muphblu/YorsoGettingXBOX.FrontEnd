@@ -13,7 +13,7 @@ class AddDeal extends Component {
     handleTouchTap() {
         let title = this.refs.title.getValue();
         let desc = this.refs.descr.getValue();
-        API.addDeal(title, desc).then( browserHistory.push('/deal/'+ans.Id) );
+        API.addDeal(title, desc).then( ans => browserHistory.push('/deal/'+ans.Id) );
     }
     render() {
         return (<div>
