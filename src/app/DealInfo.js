@@ -32,27 +32,47 @@ class DocumentUploader extends Component {
 class DealInfo extends Component {
     constructor() {
         super();
+
+        this.state = {
+            dealInfo: null,
+            isDocumentAdded: false
+        };
+
+        console.log('blabla');
     }
 
-    @autobind
-    handleTouchTap() {
-        // API.addDeal();
-        // browserHistory.push('');
-        console.log('text', this.refs.title.getValue());
+    componentWillReceiveProps(nextProps) {
+        console.log('3 Get Deal Info by ID:', nextProps.params.dealId);
+
+        API.getDeal(nextProps.params.dealId)
+            .then(dealInfo => this.setState({ dealInfo }));
+    }
+
+    componentWillMount() {
+        console.log('1 Get Deal Info by ID:', this.props.params.dealId);
+
+        API.getDeal(this.props.params.dealId)
+            .then(dealInfo => this.setState({ dealInfo }));
     }
 
     render() {
-        return (
-            <div>
-                <h1>{this.props.deal.Title}</h1>
-                <h3>{this.props.deal.Description}</h3>
+        let dealInfoTemplate = null;
 
-                <DocumentUploader />
+        if (this.state.dealInfo) {
+            dealInfoTemplate = (
+                <div>
+                    <h1>{this.state.dealInfo.Title}</h1>
+                    <h3>{this.state.dealInfo.Description}</h3>
+                    <DocumentUploader />
+                    <br />
+                    <RaisedButton label="Create" disabled={this.state.isDocumentAdded} primary={true} onTouchTap={this.handleTouchTap} />
+                </div>
+            );
+        } else {
+            dealInfoTemplate = <div />;
+        }
 
-                <br />
-                <RaisedButton label="Create" disabled={this.state.isDealAdded} primary={true} onTouchTap={this.handleTouchTap} />
-            </div>
-        );
+        return dealInfoTemplate;
     }
 }
 
