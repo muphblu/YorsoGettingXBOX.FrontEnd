@@ -5,19 +5,23 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import Divider from 'material-ui/Divider';
 import { browserHistory } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
+import API from './api';
 
 class DealsList extends Component {
     constructor() {
         super();
         this.state = {
-            deals: [{Id:"1", "Title":"TEST"},{Id:"2", "Title":"TEST 2"}]
+            deals: []
         };
     }
     clicked(id) {
         browserHistory.push('/deal/'+id);
     }
     componentDidMount(){
-        console.log("get list of deals");
+        console.log("mounted");
+        API.getDeals().then(deals => {
+            this.setState({deals: deals});
+        });
     }
     render() {
         return (<div>
