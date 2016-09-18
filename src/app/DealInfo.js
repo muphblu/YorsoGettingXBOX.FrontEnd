@@ -41,10 +41,10 @@ class DealInfo extends Component {
         console.log('blabla');
     }
 
-    componentWillReceiveProps() {
-        console.log('3 Get Deal Info by ID:', this.props.params.dealId);
+    componentWillReceiveProps(nextProps) {
+        console.log('3 Get Deal Info by ID:', nextProps.params.dealId);
 
-        API.getDeal(this.props.params.dealId)
+        API.getDeal(nextProps.params.dealId)
             .then(dealInfo => this.setState({ dealInfo }));
     }
 
