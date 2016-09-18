@@ -5,6 +5,7 @@ import Main from './Main'; // Our custom react component
 import Home from './Home';
 import AddDeal from './AddDeal';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import DealInfo from './DealInfo';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -16,5 +17,6 @@ render(<Router history={browserHistory}>
        <Route path='/' component={Main}>
        <IndexRoute component={Home} />
        <Route path='add' component={AddDeal} />
+       <Route path="/deal/:dealId" component={DealInfo}/>
        </Route>
        </Router>, document.getElementById('app'));
