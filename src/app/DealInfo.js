@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import Table from 'material-ui/Table';
 import { browserHistory } from 'react-router';
 import { autobind } from 'core-decorators';
 import FileDrop from 'react-file-drop';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
 import API from './api';
 
@@ -40,12 +40,28 @@ class DocumentTable extends Component {
     }
 
     render() {
-        return (
-            <ul>
-                {this.props.documents.map(document => {
-                    return <DocumentRow key={document.Id} info={document}/>;
-                })}
-            </ul>
+        return (<div>
+                <Table>
+                <TableHeader>
+                <TableRow>
+                <TableHeaderColumn>ID</TableHeaderColumn>
+                <TableHeaderColumn>Name</TableHeaderColumn>
+                <TableHeaderColumn>Status</TableHeaderColumn>
+                </TableRow>
+                </TableHeader>
+                <TableBody>
+                {
+                    this.props.documents.map( doc => {
+                        return  (<TableRow>
+                                 <TableRowColumn>{doc.Id}</TableRowColumn>
+                                 <TableRowColumn>{doc.Name}</TableRowColumn>
+                                 <TableRowColumn>{doc.SignInfo.IsSigned}</TableRowColumn>
+                                 </TableRow>)
+                    })
+                }
+                </TableBody>
+                </Table>
+                </div>
         );
     }
 }
@@ -67,8 +83,9 @@ class DocumentUploader extends Component {
         console.log(files, event);
 
         let file = files[0];
+        let self = this;
 
-        API.postDocument(this.props.dealId, file);
+        API.postDocument(this.props.dealId, file).then( e => { if(self.props.callback) self.props.callback(); } );
     }
 
     render() {
@@ -110,6 +127,13 @@ class DealInfo extends Component {
             .then(dealInfo => this.setState({ dealInfo }));
     }
 
+    @autobind
+    upd(){
+        var self = this;
+        API.getDeal(this.props.params.dealId)
+            .then(dealInfo => self.setState({ dealInfo }));
+    }
+
     render() {
         let dealInfoTemplate = null;
 
@@ -118,7 +142,7 @@ class DealInfo extends Component {
                 <div>
                     <h1>{this.state.dealInfo.Title}</h1>
                     <h3>{this.state.dealInfo.Description}</h3>
-                    <DocumentUploader dealId={this.state.dealInfo.Id} />
+                    <DocumentUploader dealId={this.state.dealInfo.Id} callback={ e => { this.upd(); } } />
                     <DocumentTable documents={this.state.dealInfo.Documents} />
                 </div>
             );

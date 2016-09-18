@@ -117,7 +117,7 @@ class API {
 
     static async signDocument(dealId, docId)
     {
-        let body = await fetch(`${baseUrl}/api/deals/${dealId}/documents/${docId}/sign`);
+        let body = await fetch(`${baseUrl}/api/deals/${dealId}/documents/${docId}/sign`, { method: 'post' });
         return body.json();
     }
 
