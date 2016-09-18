@@ -32,12 +32,15 @@ const muiTheme = getMuiTheme({
 });
 
 class Main extends Component {
+    componentDidUpdate() {
+        this.refs.deals.updateDeals();
+    }
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.container}>
             <Drawer open={true}>
-                <DealsList/>
+                <DealsList ref="deals"/>
             </Drawer>
             <div>{this.props.children}</div>
         </div>

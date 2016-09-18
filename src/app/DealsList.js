@@ -17,8 +17,10 @@ class DealsList extends Component {
     clicked(id) {
         browserHistory.push('/deal/'+id);
     }
-    componentDidMount(){
-        console.log("mounted");
+    componentDidMount() {
+        this.updateDeals();
+    }
+    updateDeals(){
         API.getDeals().then(deals => {
             this.setState({deals: deals});
         });
