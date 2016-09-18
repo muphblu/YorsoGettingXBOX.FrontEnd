@@ -15,6 +15,6 @@ injectTapEventPlugin();
 render(<Router history={browserHistory}>
        <Route path='/' component={Main}>
        <IndexRoute component={Home} />
-       <Route path='add' component={AddDeal} />
+       <Route path='/add' component={AddDeal} />
        </Route>
        </Router>, document.getElementById('app'));
