@@ -14,6 +14,7 @@ import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import Drawer from 'material-ui/Drawer';
+import DealsList from './DealsList.js';
 
 
 
@@ -31,45 +32,14 @@ const muiTheme = getMuiTheme({
 });
 
 class Main extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleRequestClose = this.handleRequestClose.bind(this);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
-
-    this.state = {
-      open: false,
-    };
-  }
-
-  handleRequestClose() {
-    this.setState({
-      open: false,
-    });
-  }
-
-  handleTouchTap() {
-    this.setState({
-      open: true,
-    });
-  }
-
   render() {
-    const standardActions = (
-      <FlatButton
-        label="Ok"
-        primary={true}
-        onTouchTap={this.handleRequestClose}
-      />
-    );
-
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.container}>
             <Drawer open={true}>
-            <MenuItem>Menu Item</MenuItem>
-            <MenuItem>Menu Item 2</MenuItem>
+                <DealsList/>
             </Drawer>
+            <div>{this.props.children}</div>
         </div>
       </MuiThemeProvider>
     );

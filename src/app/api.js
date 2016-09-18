@@ -4,7 +4,7 @@
 
 "use strict";
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'http://we-need-xbox.azurewebsites.net';
 
 class API {
     constructor() {
@@ -31,6 +31,7 @@ class API {
 
         return response;
     }
+
 }
 
 export default API;
