@@ -55,12 +55,13 @@ class DocumentTable extends Component {
                 <TableHeaderColumn>ID</TableHeaderColumn>
                 <TableHeaderColumn>Name</TableHeaderColumn>
                 <TableHeaderColumn>Sign Status</TableHeaderColumn>
-                <TableHeaderColumn></TableHeaderColumn>
+                <TableHeaderColumn>Sign</TableHeaderColumn>
                 </TableRow>
                 </TableHeader>
                 <TableBody>
                 {
-                    this.props.documents.map( doc => {
+                    (this.props.documents ?
+                        this.props.documents.map( doc => {
                         return  (<TableRow>
                                  <TableRowColumn>{doc.Id}</TableRowColumn>
                                  <TableRowColumn>{doc.Name}</TableRowColumn>
@@ -69,7 +70,7 @@ class DocumentTable extends Component {
                                  } )}</ul></TableRowColumn>
                                  <TableRowColumn><RaisedButton label="Sign" onTouchTap={ e => this.sign(doc.Id) } /></TableRowColumn>
                                  </TableRow>)
-                    })
+                    }) : (<div/>))
                 }
                 </TableBody>
                 </Table>
