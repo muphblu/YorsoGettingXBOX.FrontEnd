@@ -17,7 +17,7 @@ class AddDeal extends Component {
     }
     render() {
         return (<div>
-                <h1>Add deal</h1>
+                <h1>Add Deal</h1>
                 <TextField
                 ref="title"
                 hintText="Title"
