@@ -14,6 +14,7 @@ import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import Drawer from 'material-ui/Drawer';
+import DealsList from './DealsList.js';
 
 
 
@@ -36,8 +37,7 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.container}>
             <Drawer open={true}>
-            <MenuItem>Menu Item</MenuItem>
-            <MenuItem>Menu Item 2</MenuItem>
+                <DealsList/>
             </Drawer>
             <div>{this.props.children}</div>
         </div>

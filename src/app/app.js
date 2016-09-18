@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Main from './Main'; // Our custom react component
 import Home from './Home';
+import AddDeal from './AddDeal';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // Needed for onTouchTap
@@ -14,5 +15,6 @@ injectTapEventPlugin();
 render(<Router history={browserHistory}>
        <Route path='/' component={Main}>
        <IndexRoute component={Home} />
+       <Route path='add' component={AddDeal} />
        </Route>
        </Router>, document.getElementById('app'));
