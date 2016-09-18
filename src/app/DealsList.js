@@ -16,6 +16,9 @@ class DealsList extends Component {
     clicked(id) {
         browserHistory.push('/deal/'+id);
     }
+    componentDidMount(){
+        console.log("get list of deals");
+    }
     render() {
         return (<div>
                 {this.state.deals.map( deal =>

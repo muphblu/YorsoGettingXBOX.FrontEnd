@@ -11,9 +11,9 @@ class AddDeal extends Component {
         this.handleTouchTap = this.handleTouchTap.bind(this);
     }
     handleTouchTap() {
-        // browserHistory.push('');
-        let title = this.refs.title.getValue();
-        let desc = this.refs.desc.getValue();
+        // browserHistory.push('/');
+        var title = this.refs.title.getValue();
+        var desc = this.refs.desc.getValue();
         // console.log( api.getDeals() );
     }
     render() {
