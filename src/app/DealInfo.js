@@ -32,20 +32,29 @@ class DocumentUploader extends Component {
 class DealInfo extends Component {
     constructor() {
         super();
+
+
     }
 
-    @autobind
-    handleTouchTap() {
-        // API.addDeal();
-        // browserHistory.push('');
-        console.log('text', this.refs.title.getValue());
+    componentDidMount() {
+        console.log(this.props.location.query);
+
+        API.getDeal(id)
+            .then(dealInfo => this.setState({ dealInfo }));
     }
+
+    // @autobind
+    // handleTouchTap() {
+    //     // API.addDeal();
+    //     // browserHistory.push('');
+    //     console.log('text', this.refs.title.getValue());
+    // }
 
     render() {
         return (
             <div>
-                <h1>{this.props.deal.Title}</h1>
-                <h3>{this.props.deal.Description}</h3>
+                <h1>{this.state.dealInfo.Title}</h1>
+                <h3>{this.state.dealInfo.Description}</h3>
 
                 <DocumentUploader />
 

@@ -30,6 +30,37 @@ class API {
         return body.json();
     }
 
+    // GET /api/deals/<DealID>
+    // {
+    //     "Id": 0,
+    //     "Title": "Title 1",
+    //     "Description": "Description 1",
+    //     "ContractId": "123123123123123",
+    //     "Documents": [
+    // {
+    //     "Id": 1,
+    //     "Name": "\"data.txt\"",
+    //     "Link": "/Files/D7D323EF1C5FB9F271E3EAB6BD00615D.txt",
+    //     "SignInfo": null,
+    //     "Status": 0,
+    //     "Hash": "D7D323EF1C5FB9F271E3EAB6BD00615D"
+    // },
+    // {
+    //     "Id": 1,
+    //     "Name": "\"rules.txt\"",
+    //     "Link": "/Files/B4CA0C01B2015928036A1304FB4936F4.txt",
+    //     "SignInfo": null,
+    //     "Status": 0,
+    //     "Hash": "B4CA0C01B2015928036A1304FB4936F4"
+    // }
+    //     ]
+    // }
+    static async getDeal(id) {
+        let body = await fetch(`${baseUrl}/api/deals/${id}`);
+
+        return body.json();
+    }
+
     // POST /api/deals
     // [
     //     {
