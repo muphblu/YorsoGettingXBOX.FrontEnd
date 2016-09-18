@@ -39,6 +39,14 @@ class DocumentTable extends Component {
         super();
     }
 
+    @autobind
+    sign(id) {
+        var self = this;
+        API.signDocument(this.props.dealId, id).then( e => {
+            if( self.props.onSign ) self.props.onSign();
+        });
+    }
+
     render() {
         return (<div>
                 <Table>
@@ -46,7 +54,8 @@ class DocumentTable extends Component {
                 <TableRow>
                 <TableHeaderColumn>ID</TableHeaderColumn>
                 <TableHeaderColumn>Name</TableHeaderColumn>
-                <TableHeaderColumn>Status</TableHeaderColumn>
+                <TableHeaderColumn>Sign Status</TableHeaderColumn>
+                <TableHeaderColumn></TableHeaderColumn>
                 </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -55,7 +64,10 @@ class DocumentTable extends Component {
                         return  (<TableRow>
                                  <TableRowColumn>{doc.Id}</TableRowColumn>
                                  <TableRowColumn>{doc.Name}</TableRowColumn>
-                                 <TableRowColumn>{doc.SignInfo.IsSigned}</TableRowColumn>
+                                 <TableRowColumn><ul>{doc.SignInfo.map( info => {
+                                     return (<li> { info.Signer.Name } </li>)
+                                 } )}</ul></TableRowColumn>
+                                 <TableRowColumn><RaisedButton label="Sign" onTouchTap={ e => this.sign(doc.Id) } /></TableRowColumn>
                                  </TableRow>)
                     })
                 }
@@ -143,7 +155,7 @@ class DealInfo extends Component {
                     <h1>{this.state.dealInfo.Title}</h1>
                     <h3>{this.state.dealInfo.Description}</h3>
                     <DocumentUploader dealId={this.state.dealInfo.Id} callback={ e => { this.upd(); } } />
-                    <DocumentTable documents={this.state.dealInfo.Documents} />
+                    <DocumentTable documents={this.state.dealInfo.Documents} dealId={this.props.params.dealId} onSign={ e => this.upd() } />
                 </div>
             );
         } else {
