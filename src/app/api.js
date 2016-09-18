@@ -82,6 +82,18 @@ class API {
         return true;
     }
 
+
+    static async addDeal(title, desc) {
+        let body = await fetch(`${baseUrl}/api/deals`, {
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify( { Title: title, Description: desc } ),
+            method: 'post' });
+        return body.json();
+    }
+
 }
 
 export default API;
